@@ -1,6 +1,7 @@
 package com.example.car_rent_backend.Controller;
 
 import com.example.car_rent_backend.Data.Booking;
+import com.example.car_rent_backend.Data.BookingResponse;
 import com.example.car_rent_backend.Service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,9 +24,10 @@ public class BookingController {
     }
 
     @GetMapping("/user/{user_id}/getBookingByUser")
-    public ResponseEntity<List<Booking>> getBookingByUser(@PathVariable int user_id) {
-        List<Booking> bookings = bookingService.getBookingByUser(user_id);
-        return ResponseEntity.ok(bookings);
+    public ResponseEntity<List<BookingResponse>> getBookingByUser(@PathVariable int user_id) {
+        List<BookingResponse> bookingResponses = bookingService.getBookingByUser(user_id);
+        return ResponseEntity.ok(bookingResponses);
     }
+
 
 }

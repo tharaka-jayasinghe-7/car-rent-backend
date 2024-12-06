@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BookingService {
@@ -30,8 +31,21 @@ public class BookingService {
 
         return bookingRepo.save(booking);
     }
-    public List<Booking> getBookingByUser(int user_id) {
-        return bookingRepo.findByUserID(user_id);
-    }
 
+    public List<BookingResponse> getBookingByUser(int user_id) {
+        List<Booking> bookings = bookingRepo.findByUserID(user_id);
+        // Convert each Booking to BookingResponse
+        return bookings.stream().map(booking -> {
+            String carName = booking.getCar() != null ? booking.getCar().getName() : null;
+            Double carPricePerDay = booking.getCar() != null ? booking.getCar().getPrice() : null;
+            return new BookingResponse(
+                    booking.getBooking_id(),
+                    booking.getPickup_date().toString(),  // Convert Date to String
+                    booking.getNum_of_days(),
+                    booking.getFull_amount(),
+                    carName,
+                    carPricePerDay
+            );
+        }).collect(Collectors.toList());
+    }
 }
