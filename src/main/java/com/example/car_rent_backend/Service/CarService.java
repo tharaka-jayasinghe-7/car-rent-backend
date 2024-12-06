@@ -26,4 +26,8 @@ public class CarService {
         }
         return null;
     }
+
+    public Car findCarByName(String name) {
+        return carRepo.findCarByName(name);
+    }
 }

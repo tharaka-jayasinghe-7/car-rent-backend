@@ -48,4 +48,18 @@ public class BookingService {
             );
         }).collect(Collectors.toList());
     }
+
+    public Booking updateBooking(int user_id, int car_id, Booking booking) {
+        User user = userRepo.findById(user_id)
+                .orElseThrow(() -> new RuntimeException("User not found with id: " + user_id));
+        Car car = carRepo.findById(car_id)
+                .orElseThrow(() -> new RuntimeException("User not found with id: " + car_id));
+        booking.setUser(user);
+        booking.setCar(car);
+        return bookingRepo.save(booking);
+    }
+
+    public void deleteBooking(int booking_id) {
+        bookingRepo.deleteById(booking_id);
+    }
 }

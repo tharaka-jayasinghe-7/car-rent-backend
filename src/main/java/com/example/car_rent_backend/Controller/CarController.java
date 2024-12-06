@@ -31,4 +31,9 @@ public class CarController {
         return ResponseEntity.ok(car);
     }
 
+    @GetMapping(path = "/getCarByName")
+    public Car getCarByName(@RequestParam String name) {
+        return carService.findCarByName(name);
+    }
+
 }

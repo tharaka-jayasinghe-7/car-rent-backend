@@ -29,5 +29,15 @@ public class BookingController {
         return ResponseEntity.ok(bookingResponses);
     }
 
+    @PutMapping("user/{user_id}/car/{car_id}/updateBooking/{booking_id}")
+    public Booking updateBooking(@PathVariable int user_id, @PathVariable int car_id, @PathVariable int booking_id, @RequestBody Booking booking) {
+        booking.setBooking_id(booking_id);
+        return bookingService.updateBooking(user_id, car_id, booking);
+    }
+
+    @DeleteMapping("/deleteBooking/{booking_id}")
+    public void deleteBooking(@PathVariable int booking_id) {
+        bookingService.deleteBooking(booking_id);
+    }
 
 }
