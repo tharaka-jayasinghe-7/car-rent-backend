@@ -1,9 +1,8 @@
 package com.example.car_rent_backend.Data;
-
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 public class Car {
@@ -25,6 +24,10 @@ public class Car {
 
     @Column(length = 2000)
     private String image;
+
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference("car-bookings")
+    private List<Booking> bookings;
 
     public int getCar_id() {
         return car_id;

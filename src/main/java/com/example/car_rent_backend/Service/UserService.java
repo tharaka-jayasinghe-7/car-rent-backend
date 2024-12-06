@@ -25,20 +25,22 @@ public class UserService {
         return userRepo.save(user);
     }
 
-    public boolean authenticateUser(String email, String password) {
+    public User authenticateUser(String email, String password) {
         User user = userRepo.findByEmail(email);
-        if (user != null) {
-            return passwordEncoder.matches(password, user.getPassword());
+
+        if (user != null && passwordEncoder.matches(password, user.getPassword())) {
+            return user;
         }
-        return false;
+
+        return null;
     }
 
     public User findUserById(int user_id) {
         Optional<User> user = userRepo.findById(user_id);
-        if (user.isPresent()) {
-            return user.get();
-        }
-        return null;
+        return user.orElse(null);
     }
 
+    public User getUserByEmail(String email) {
+        return userRepo.findByEmail(email);
+    }
 }
