@@ -3,11 +3,8 @@ package com.example.car_rent_backend.Service;
 import com.example.car_rent_backend.Data.User;
 import com.example.car_rent_backend.Data.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Optional;
 
