@@ -3,7 +3,6 @@ package com.example.car_rent_backend.Service;
 import com.example.car_rent_backend.Data.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,7 +39,7 @@ public class BookingService {
             Double carPricePerDay = booking.getCar() != null ? booking.getCar().getPrice() : null;
             return new BookingResponse(
                     booking.getBooking_id(),
-                    booking.getPickup_date().toString(),  // Convert Date to String
+                    booking.getPickup_date().toString(),
                     booking.getNum_of_days(),
                     booking.getFull_amount(),
                     carName,

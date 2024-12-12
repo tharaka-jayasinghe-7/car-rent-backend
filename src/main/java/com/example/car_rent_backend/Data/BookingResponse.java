@@ -8,7 +8,7 @@ public class BookingResponse {
     private String carName;
     private Double carPricePerDay;
 
-    // Constructor
+
     public BookingResponse(int bookingId, String pickupDate, int numOfDays, Double fullAmount, String carName, Double carPricePerDay) {
         this.bookingId = bookingId;
         this.pickupDate = pickupDate;
@@ -18,7 +18,7 @@ public class BookingResponse {
         this.carPricePerDay = carPricePerDay;
     }
 
-    // Getters and Setters
+
     public int getBookingId() {
         return bookingId;
     }
